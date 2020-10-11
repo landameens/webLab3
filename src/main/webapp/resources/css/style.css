@@ -1,0 +1,32 @@
+* {
+    --yellow-color: #ffbb91;
+    --third-color: #065c6f;
+    --main-color: #faf3dd;
+    --second-color: #64958f;
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--second-color);
+}
+
+.ui-clock {
+    width: 200px;
+}
+
+span {
+    color: yellow;
+}
+
+#time {
+    height: 20vh;
+    color: white;
+    font-size: 22vh;
+    font-family: sans-serif;
+    line-height: 20.4vh;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
