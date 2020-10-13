@@ -7,32 +7,16 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
     <title>Lab_3</title>
-    <h:outputStylesheet library="css" name="materialize.min.css"/>
+    <link rel="shortcut icon" href="resources/img/15.ico" type="image/x-icon"/>
     <h:outputStylesheet library="css" name="style.css"/>
-    <h:outputScript library="js" name="materialize.min.js"/>
 </h:head>
 <h:body>
-    <div id="header">
-        <ui:insert name="header">
-            <ui:include src="header.xhtml"/>
-        </ui:insert>
-    </div>
+    <p:button outcome="to_main" action="main" value="Check"/>
 
     <div id="time"></div>
-
-    <h:form>
-        <p:button outcome="to_main" action="main" value="Main"/>
-    </h:form>
-
-    <div id="footer">
-        <ui:insert name="footer">
-            <ui:include src="footer.xhtml"/>
-        </ui:insert>
-    </div>
 
     <ui:insert name="scripts">
         <h:outputScript library="js" name="clock.js"/>
     </ui:insert>
-
 </h:body>
 </html>
