@@ -8,60 +8,64 @@
       xmlns:p="http://primefaces.org/ui">
 <h:head>
     <title>Lab_3</title>
-    <link rel="shortcut icon" href="resources/img/15.ico" type="image/x-icon"/>
+    <h:graphicImage rel="shortcut icon" href="resources/img/15.ico" type="image/x-icon"/>
     <h:outputStylesheet library="css" name="style.css"/>
 </h:head>
 <h:body onload="drawCanwas('canvas')">
-    <p:button outcome="to_index" action="index" value="Start"/>
+    <ui:composition template="views/template.xhtml">
+        <ui:define name="content">
+            <p:button id="go-button" outcome="to_index" action="index" value="Start"/>
+            <div class="flex-container-main">
+                <div class="flex-container">
+                    <h:form styleClass="form">
+                        <div id="form">
+                            <h:outputLabel for="x-input" disabled="true" value="Choose X:"/>
+                            <h:selectOneMenu id="x-input" value="#{Record.point.x}">
+                                <f:selectItem itemValue="-2" itemLabel="-2"/>
+                                <f:selectItem itemValue="-1.5" itemLabel="-1,5"/>
+                                <f:selectItem itemValue="-1" itemLabel="-1"/>
+                                <f:selectItem itemValue="-0.5" itemLabel="-0,5"/>
+                                <f:selectItem itemValue="0" itemLabel="0"/>
+                                <f:selectItem itemValue="0.5" itemLabel="0,5"/>
+                                <f:selectItem itemValue="1" itemLabel="1"/>
+                                <f:selectItem itemValue="1.5" itemLabel="1.5"/>
+                            </h:selectOneMenu>
 
-    <div class="container content">
-        <h:form id="form">
-            <div class="form_contant" style="margin-left:30px;">
-                <h:outputLabel for="X" disabled="true" value="Выберите X:"/>
-                <h:selectOneMenu id="X" value="#{Record.point.x}">
-                    <f:selectItem itemValue="-2" itemLabel="-2"/>
-                    <f:selectItem itemValue="-1.5" itemLabel="-1,5"/>
-                    <f:selectItem itemValue="-1" itemLabel="-1"/>
-                    <f:selectItem itemValue="-0.5" itemLabel="-0,5"/>
-                    <f:selectItem itemValue="0" itemLabel="0"/>
-                    <f:selectItem itemValue="0.5" itemLabel="0,5"/>
-                    <f:selectItem itemValue="1" itemLabel="1"/>
-                    <f:selectItem itemValue="1.5" itemLabel="1.5"/>
-                </h:selectOneMenu>
+                            <h:outputLabel for="y-input" disabled="true" value="Enter Y:"/>
+                            <p:inputNumber id="y-input" class="form_input" value="#{Record.point.y}"/>
 
+                            <h:outputLabel for="r-input" disabled="true" value="Choose R:"/>
+                            <h:selectOneRadio id="r-input" value="#{Record.radius}">
+                                <f:selectItem itemLabel="1" itemValue="1"/>
+                                <f:selectItem itemValue="2" itemLabel="2"/>
+                                <f:selectItem itemValue="3" itemLabel="3"/>
+                                <f:selectItem itemValue="4" itemLabel="4"/>
+                                <f:selectItem itemValue="5" itemLabel="5"/>
+                            </h:selectOneRadio>
 
-                <h:outputLabel for="Y" value="Введите Y:"/>
-                <p:inputNumber id="Y" value="#{Record.point.y}">
+                            <h:commandButton id="form-button" action="results.xhtml" type="submit" value="Check">
+                                <f:actionListener binding="#{Record.process()}"/>
+                                <f:actionListener binding="#{History.addRecord(Record)}"/>
+                            </h:commandButton>
+                        </div>
+                    </h:form>
 
-                </p:inputNumber>
-
-                <h:outputLabel for="R" value="Выберите R: "/>
-                <h:selectOneRadio id="R" value="#{Record.radius}">
-                    <f:selectItem itemValue="1" itemLabel="1"/>
-                    <f:selectItem itemValue="2" itemLabel="2"/>
-                    <f:selectItem itemValue="3" itemLabel="3"/>
-                    <f:selectItem itemValue="4" itemLabel="4"/>
-                    <f:selectItem itemValue="5" itemLabel="5"/>
-                </h:selectOneRadio>
-
-                <h:commandButton id="submit" action="results.xhtml" type="submit" value="Проверить"
-                                 class="button crimson">
-                    <f:actionListener binding="#{Record.process()}"/>
-                    <f:actionListener binding="#{History.addRecord(Record)}"/>
-                </h:commandButton>
-
-                <div style="text-align: center; max-width: 200px;"><h:message style="color: red" id="errMsg" for="Y"/>
+                    <canvas id="canvas" width="350" height="350"></canvas>
                 </div>
+                <table>
+                    <tr>
+                        <th>X</th>
+                        <th>Y</th>
+                        <th>R</th>
+                        <th>Result</th>
+                        <th>Time</th>
+                    </tr>
+                </table>
             </div>
-
-        </h:form>
-
-        <canvas id="canvas" width="350" height="350"></canvas>
-
-    </div>
-
-    <ui:insert name="scripts">
-        <h:outputScript library="js" name="canvas.js"/>
-    </ui:insert>
+        </ui:define>
+        <ui:define name="scripts">
+            <h:outputScript library="js" name="canvas.js"/>
+        </ui:define>
+    </ui:composition>
 </h:body>
 </html>

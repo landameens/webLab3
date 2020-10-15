@@ -8,15 +8,17 @@
 <h:head>
     <title>Lab_3</title>
     <link rel="shortcut icon" href="resources/img/15.ico" type="image/x-icon"/>
-    <h:outputStylesheet library="css" name="style.css"/>
+    <h:outputStylesheet name="css/style.css"/>
 </h:head>
 <h:body>
-    <p:button outcome="to_main" action="main" value="Check"/>
-
-    <div id="time"></div>
-
-    <ui:insert name="scripts">
-        <h:outputScript library="js" name="clock.js"/>
-    </ui:insert>
+    <ui:composition template="views/template.xhtml">
+        <ui:define name="content">
+            <p:button id="go-button" outcome="to_main" action="main" value="Main"/>
+            <div id="time"></div>
+        </ui:define>
+        <ui:define name="scripts">
+            <h:outputScript library="js" name="clock.js"/>
+        </ui:define>
+    </ui:composition>
 </h:body>
 </html>

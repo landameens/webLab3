@@ -1,4 +1,4 @@
-function drawCanwas(id, rValue){
+function drawCanwas(id){
   const canvas = document.getElementById(id);
   const ctx = canvas.getContext("2d");
 
