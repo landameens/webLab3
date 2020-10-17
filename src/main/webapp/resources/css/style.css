@@ -43,12 +43,12 @@ h3 {
 
 #header,
 #footer {
-    background-color: var(--third-color);
+    background-color: var(--yellow-color);
     overflow: hidden;
-    padding: 20px 10px;
+    padding: 0 5px;
 }
 
-#header > .title {
+#header .title {
     color: #faf3dd;
     float: left;
     text-align: center;
@@ -73,20 +73,19 @@ h3 {
     align-items: center;
 }
 
-label {
+label{
     color: var(--main-color);
     font-size: 17px;
 }
 
-.form {
-    background-color: var(--yellow-color);
-    text-align: center;
-    margin: auto ;
+form {
+    background-color: var(--second-color);
+    margin: auto auto 16px;
+    border-radius: 8px;
 }
 
-.form-input{
+.form-input {
     text-align: center;
-    margin-left: 6%;
     box-sizing: border-box;
     width: 100%;
     margin-bottom: 16px;
@@ -94,9 +93,8 @@ label {
     transition: transform 0.3s ease-out;
     color: var(--main-color);
     border: none;
-    border-radius: 8px;
     outline: none;
-    background-color: var(--second-color);
+    background-color: transparent;
     font-size: 25px;
 }
 
@@ -113,7 +111,7 @@ label {
 }
 
 
-#form_button {
+input[type="submit" i] {
     padding: 12px 32px;
     transition: all 0.3s ease-out;
     text-transform: uppercase;
@@ -127,8 +125,8 @@ label {
     font-weight: 700;
 }
 
-.img {
-    width: 150px;
+img {
+    width: 50px;
     display: block;
     height: auto;
     margin: 0 auto 5px;
@@ -141,7 +139,6 @@ canvas {
     margin-right: 10%;
 }
 
-#form_button,
 #go-button {
     text-decoration: none;
     outline: none;
@@ -164,7 +161,6 @@ canvas {
     font-size: 20px;
 }
 
-#form_button:hover,
 #go-button:hover {
     animation: stripes .75s infinite linear;
     background: linear-gradient(45deg, var(--yellow-color) 25%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 50%, var(--yellow-color) 50%,
@@ -173,14 +169,61 @@ canvas {
     color: var(--second-color);
 }
 
-#r-input,
-#x-input {
-    margin-bottom: 16px;
-    display: block;
-}
-
 .header-footer {
     width: 100%;
     margin: 0;
     text-align: center;
+}
+
+#footer {
+    bottom: 0;
+    width: 100%;
+}
+
+.result-table {
+    font-size: 20px;
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--second-color);
+    border-radius: 8px;
+    margin: auto auto 16px;
+    text-align: center;
+}
+
+.result-table th {
+    color: var(--yellow-color);
+    border-bottom: 1px solid var(--main-color);
+    padding: 12px 17px;
+}
+
+.result-table td {
+    color: var(--main-color);
+    border-bottom: 1px solid var(--main-color);
+    border-right: 1px solid var(--third-color);
+    padding: 7px 17px;
+}
+
+input[type="radio" i] {
+    display: none;
+    margin-right: 7px;
+    width: 60px;
+}
+
+input[type="radio" i] + label {
+    display: inline-block;
+    cursor: pointer;
+    padding: 5px 15px;
+    line-height: 34px;
+    border: 1px solid var(--main-color);
+    border-radius: 8px;
+    width: 57px;
+    font-size: 28px;
+    margin: 3px 8px;
+}
+
+input[type="radio" i] + label:hover,
+input[type="radio" i] + label:checked {
+    transition: transform 0.3s ease-out;
+    color: var(--third-color);
+    border: 1px solid var(--yellow-color);
 }

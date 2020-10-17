@@ -11,48 +11,53 @@
     <h:graphicImage rel="shortcut icon" href="resources/img/15.ico" type="image/x-icon"/>
     <h:outputStylesheet library="css" name="style.css"/>
 </h:head>
-<h:body onload="drawCanwas('canvas')">
+<h:body onload="drawCanwas()">
     <ui:composition template="views/template.xhtml">
         <ui:define name="content">
             <p:button id="go-button" outcome="to_index" action="index" value="Start"/>
             <div class="flex-container-main">
                 <div class="flex-container">
-                    <h:form styleClass="form">
-                        <div id="form">
-                            <h:outputLabel for="x-input" disabled="true" value="Choose X:"/>
-                            <h:selectOneMenu id="x-input" value="#{Record.point.x}">
-                                <f:selectItem itemValue="-2" itemLabel="-2"/>
-                                <f:selectItem itemValue="-1.5" itemLabel="-1,5"/>
-                                <f:selectItem itemValue="-1" itemLabel="-1"/>
-                                <f:selectItem itemValue="-0.5" itemLabel="-0,5"/>
-                                <f:selectItem itemValue="0" itemLabel="0"/>
-                                <f:selectItem itemValue="0.5" itemLabel="0,5"/>
-                                <f:selectItem itemValue="1" itemLabel="1"/>
-                                <f:selectItem itemValue="1.5" itemLabel="1.5"/>
-                            </h:selectOneMenu>
+                    <canvas id="canvas" width="350" height="350"></canvas>
+                    <h:form>
+                        <div>
+                            <div class="form-input">
+                                <h:outputLabel for="x-input" disabled="true" value="Choose X:"/>
+                                <h:selectOneMenu id="x-input" value="#{Record.point.x}">
+                                    <f:selectItem itemValue="-2" itemLabel="-2"/>
+                                    <f:selectItem itemValue="-1.5" itemLabel="-1,5"/>
+                                    <f:selectItem itemValue="-1" itemLabel="-1"/>
+                                    <f:selectItem itemValue="-0.5" itemLabel="-0,5"/>
+                                    <f:selectItem itemValue="0" itemLabel="0"/>
+                                    <f:selectItem itemValue="0.5" itemLabel="0,5"/>
+                                    <f:selectItem itemValue="1" itemLabel="1"/>
+                                    <f:selectItem itemValue="1.5" itemLabel="1.5"/>
+                                </h:selectOneMenu>
+                            </div>
 
-                            <h:outputLabel for="y-input" disabled="true" value="Enter Y:"/>
-                            <p:inputNumber id="y-input" class="form_input" value="#{Record.point.y}"/>
+                            <div class="form-input">
+                                <h:outputLabel for="y-input" disabled="true" value="Enter Y:"/>
+                                <p:inputNumber id="y-input" value="#{Record.point.y}"/>
+                            </div>
 
-                            <h:outputLabel for="r-input" disabled="true" value="Choose R:"/>
-                            <h:selectOneRadio id="r-input" value="#{Record.radius}">
-                                <f:selectItem itemLabel="1" itemValue="1"/>
-                                <f:selectItem itemValue="2" itemLabel="2"/>
-                                <f:selectItem itemValue="3" itemLabel="3"/>
-                                <f:selectItem itemValue="4" itemLabel="4"/>
-                                <f:selectItem itemValue="5" itemLabel="5"/>
-                            </h:selectOneRadio>
+                            <div class="form-input">
+                                <h:outputLabel for="r-input" disabled="true" value="Choose R:"/>
+                                <h:selectOneRadio id="r-input" value="#{Record.radius}">
+                                    <f:selectItem itemLabel="1" itemValue="1"/>
+                                    <f:selectItem itemValue="2" itemLabel="2"/>
+                                    <f:selectItem itemValue="3" itemLabel="3"/>
+                                    <f:selectItem itemValue="4" itemLabel="4"/>
+                                    <f:selectItem itemValue="5" itemLabel="5"/>
+                                </h:selectOneRadio>
 
-                            <h:commandButton id="form-button" action="results.xhtml" type="submit" value="Check">
-                                <f:actionListener binding="#{Record.process()}"/>
-                                <f:actionListener binding="#{History.addRecord(Record)}"/>
-                            </h:commandButton>
+                                <h:commandButton id="button" action="main.xhtml" type="submit" value="Check">
+                                    <f:actionListener binding="#{Record.process()}"/>
+                                    <f:actionListener binding="#{History.addRecord(Record)}"/>
+                                </h:commandButton>
+                            </div>
                         </div>
                     </h:form>
-
-                    <canvas id="canvas" width="350" height="350"></canvas>
                 </div>
-                <table>
+                <table class="result-table">
                     <tr>
                         <th>X</th>
                         <th>Y</th>

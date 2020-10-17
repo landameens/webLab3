@@ -1,5 +1,6 @@
-function drawCanwas(id){
-  const canvas = document.getElementById(id);
+function drawCanwas(){
+  alert('I`m working!');
+  const canvas = document.getElementById('canvas');
   const ctx = canvas.getContext("2d");
 
 //прямоугольник
