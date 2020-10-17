@@ -5,21 +5,18 @@ import java.util.LinkedList;
 
 @ManagedBean(name = "History", eager = true)
 @SessionScoped
-public class History
-{
+public class History {
 
     private Deque<Record> records;
 
-    public History()
-    {
+    public History() {
         records = new LinkedList<Record>();
     }
 
-    public Deque<Record> getRecords()
-    {
+    public Deque<Record> getRecords() {
         return records;
     }
 
-    public void addRecord(Record record){
+    public void addRecord(Record record) {
     }
 }

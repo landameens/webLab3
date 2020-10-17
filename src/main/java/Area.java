@@ -1,14 +1,11 @@
-public class Area
-{
+public class Area {
     private double radius;
 
-    public Area()
-    {
+    public Area() {
         radius = 1D;
     }
 
-    public boolean contains(Point point)
-    {
+    public boolean contains(Point point) {
         double x = point.getX();
         double y = point.getY();
         double halfRadius = getRadius() / 2;
@@ -29,19 +26,16 @@ public class Area
         return inTriangle || inCircleQuadrant || inSquare;
     }
 
-    public double getRadius()
-    {
+    public double getRadius() {
         return radius;
     }
 
-    public void setRadius(double radius)
-    {
+    public void setRadius(double radius) {
         this.radius = radius;
     }
 
     @Override
-    public boolean equals(Object o)
-    {
+    public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
@@ -51,8 +45,7 @@ public class Area
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         long temp = Double.doubleToLongBits(radius);
         return (int) (temp ^ (temp >>> 32));
     }
