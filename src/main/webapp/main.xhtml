@@ -6,11 +6,6 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
-<h:head>
-    <title>Lab_3</title>
-    <h:graphicImage rel="shortcut icon" href="resources/img/15.ico" type="image/x-icon"/>
-    <h:outputStylesheet library="css" name="style.css"/>
-</h:head>
 <h:body>
     <ui:composition template="views/template.xhtml">
         <ui:define name="content">
@@ -70,6 +65,7 @@
         </ui:define>
         <ui:define name="scripts">
             <h:outputScript library="js" name="canvas.js"/>
+            <h:outputScript library="js" name="main.js"/>
         </ui:define>
     </ui:composition>
 </h:body>

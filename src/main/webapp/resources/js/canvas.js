@@ -14,7 +14,7 @@ function drawCanwas() {
 //треугольник
     ctx.beginPath();
     ctx.moveTo(80, 180);
-    ctx.lineTo(150, 230);
+    ctx.lineTo(150, 250);
     ctx.lineTo(150, 180);
     ctx.lineTo(80, 180);
     ctx.fill();

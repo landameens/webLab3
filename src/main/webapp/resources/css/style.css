@@ -25,7 +25,7 @@ body {
     display: flex;
     position: relative;
     overflow: hidden;
-    margin: auto;
+    margin: auto auto;
 }
 
 h1 {
@@ -48,6 +48,17 @@ h3 {
     padding: 0 5px;
 }
 
+.header-footer {
+    width: 100%;
+    margin: 0;
+    text-align: center;
+}
+
+#footer {
+    bottom: 0;
+    width: 100%;
+}
+
 #header .title {
     color: #faf3dd;
     float: left;
@@ -59,13 +70,13 @@ h3 {
 }
 
 #main {
-    margin: 0 auto;
+    margin: auto;
 }
 
 .flex-container {
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
 }
 
 .flex-container-main {
@@ -76,11 +87,12 @@ h3 {
 label{
     color: var(--main-color);
     font-size: 17px;
+    margin-right: 5px;
 }
 
 form {
     background-color: var(--second-color);
-    margin: auto auto 16px;
+    margin: auto 16px 16px;
     border-radius: 8px;
 }
 
@@ -96,13 +108,6 @@ form {
     outline: none;
     background-color: transparent;
     font-size: 25px;
-}
-
-.form-input::placeholder {
-    opacity: 0.6;
-    color: var(--yellow-color);
-    font-size: 13px;
-    text-align: center;
 }
 
 .form-input:focus {
@@ -169,24 +174,13 @@ canvas {
     color: var(--second-color);
 }
 
-.header-footer {
-    width: 100%;
-    margin: 0;
-    text-align: center;
-}
-
-#footer {
-    bottom: 0;
-    width: 100%;
-}
-
 .result-table {
     font-size: 20px;
     width: 100%;
     border-collapse: collapse;
     background: var(--second-color);
     border-radius: 8px;
-    margin: auto auto 16px;
+    margin: auto 16px 16px;
     text-align: center;
 }
 
@@ -221,9 +215,13 @@ input[type="radio" i] + label {
     margin: 3px 8px;
 }
 
-input[type="radio" i] + label:hover,
-input[type="radio" i] + label:checked {
+input[type="radio" i] + label:hover {
     transition: transform 0.3s ease-out;
+    color: var(--third-color);
+    border: 1px solid var(--yellow-color);
+}
+
+input[type="radio" i]:checked + label {
     color: var(--third-color);
     border: 1px solid var(--yellow-color);
 }
