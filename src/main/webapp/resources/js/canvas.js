@@ -1,7 +1,11 @@
-function drawCanwas() {
-    const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext("2d");
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext("2d");
 
+document.addEventListener("DOMContentLoaded", function () {
+    drawCanwas();
+});
+
+function drawCanwas() {
 //прямоугольник
     ctx.fillStyle = "#ffbb91";
     ctx.fillRect(150, 40, 140, 140);
@@ -88,21 +92,7 @@ function drawCanwas() {
 
     ctx.fillText("X", 340, 180);
     ctx.fillText("Y", 165, 10);
-
-    // function setPointsCoordinate() {
-    //   const pointsCoordinates = sessionStorage.getItem('points') ? JSON.parse(sessionStorage.getItem('points')) : [];
-    //
-    //   const k = 140 / rValue
-    //   const xCoordinate = (xValue * k) + 150;
-    //   const yCoordinate = 180 - (yValue * k);
-    //   const coordinate = {
-    //     "x": xCoordinate,
-    //     "y": yCoordinate,
-    //   };
-    //
-    //   pointsCoordinates.push(coordinate);
-    //   sessionStorage.setItem('points', JSON.stringify(pointsCoordinates));
-    // }
+    setPointsCoordinate();
 }
 
 function setPointer(x, y) {
@@ -111,6 +101,17 @@ function setPointer(x, y) {
     ctx.fill();
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    drawCanwas();
-});
+function setPointsCoordinate() {
+    const pointsCoordinates = sessionStorage.getItem('points') ? JSON.parse(sessionStorage.getItem('points')) : [];
+
+    const k = 140 / rValue
+    const xCoordinate = (xValue * k) + 150;
+    const yCoordinate = 180 - (yValue * k);
+    const coordinate = {
+        "x": xCoordinate,
+        "y": yCoordinate,
+    };
+
+    pointsCoordinates.push(coordinate);
+    sessionStorage.setItem('points', JSON.stringify(pointsCoordinates));
+    }

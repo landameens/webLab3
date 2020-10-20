@@ -1,14 +1,16 @@
 let xValue, yValue, rValue;
+
 canvas.addEventListener("click", (event) => {
+        rValue = $('input[type="radio" i]:checked').val();
         let position = getRelativeCoords(event);
         xValue = position.x;
         yValue = position.y;
-        //setPointer(xValue, yValue);
+        setPointer(xValue, yValue);
         xValue = xValue - 150;
         yValue = 180 - yValue;
-        //const k = rValue / 140
-        //xValue = (xValue * k).toFixed(1);
-        //yValue = (yValue * k).toFixed(1);
+        const k = rValue / 140
+        xValue = (xValue * k).toFixed(1);
+        yValue = (yValue * k).toFixed(1);
         alert('x coordinate = ' + xValue + ' y coordinate = ' + yValue);
 });
 
