@@ -14,6 +14,7 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    min-height: 100vh;
 }
 
 #time {
@@ -55,8 +56,7 @@ h3 {
 }
 
 #footer {
-    bottom: 0;
-    width: 100%;
+    margin-top: auto;
 }
 
 #header .title {
@@ -71,6 +71,13 @@ h3 {
 
 #main {
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#main > button {
+    margin-bottom: 2rem;
 }
 
 .flex-container {
@@ -81,7 +88,7 @@ h3 {
 
 .flex-container-main {
     display: flex;
-    align-items: center;
+    align-items: start;
 }
 
 label{
@@ -180,7 +187,7 @@ canvas {
     border-collapse: collapse;
     background: var(--second-color);
     border-radius: 8px;
-    margin: auto 16px 16px;
+    margin: 0 16px 16px;
     text-align: center;
 }
 

@@ -11,7 +11,6 @@ canvas.addEventListener("click", (event) => {
         const k = rValue / 140
         xValue = (xValue * k).toFixed(1);
         yValue = (yValue * k).toFixed(1);
-        alert('x coordinate = ' + xValue + ' y coordinate = ' + yValue);
 });
 
 function getRelativeCoords(event) {

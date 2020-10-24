@@ -8,7 +8,12 @@
 <h:body>
     <ui:composition template="views/template.xhtml">
         <ui:define name="content">
-            <p:button id="go-button" outcome="to_main" action="main" value="Main"/>
+            <p:button id="go-button"
+                      outcome="to_main"
+                      action="main"
+                      value="Main"
+                      styleClass="nav-btn"
+            />
             <div id="time"></div>
         </ui:define>
         <ui:define name="scripts">

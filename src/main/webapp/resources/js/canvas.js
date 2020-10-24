@@ -97,7 +97,7 @@ function drawCanwas() {
 
 function setPointer(x, y) {
     ctx.moveTo(x, y);
-    ctx.arc(x, y, 4, 0, (Math.PI * 2), true);
+    ctx.arc(x, y, 3, 0, (Math.PI * 2), true);
     ctx.fill();
 }
 

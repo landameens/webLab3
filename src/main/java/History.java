@@ -1,22 +1,57 @@
+import jdk.nashorn.internal.objects.annotations.Getter;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import java.io.Serializable;
 import java.util.Deque;
 import java.util.LinkedList;
 
-@ManagedBean(name = "History", eager = true)
+@ManagedBean(name = "history", eager = true)
 @SessionScoped
-public class History {
+public class History implements Serializable {
+    private SessionFactory sessionFactory;
 
-    private Deque<Record> records;
+    private Point point;
+
+    private Deque<Point> points;
 
     public History() {
-        records = new LinkedList<Record>();
+        points = new LinkedList<Point>();
+        point = new Point();
+        connection();
     }
 
-    public Deque<Record> getRecords() {
-        return records;
+    public Deque<Point> getRecords() {
+        return points;
     }
 
-    public void addRecord(Record record) {
+    public void addRecord() {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        point.check();
+        points.add(point);
+        session.save(point);
+        session.getTransaction().commit();
+        point = new Point();
+    }
+
+    private void connection() {
+        Configuration configuration = new Configuration().configure();
+        configuration.addAnnotatedClass(Point.class);
+        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+        sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+    }
+
+    public Point getPoint() {
+        return point;
+    }
+
+    public void setPoint(Point point) {
+        this.point = point;
     }
 }
