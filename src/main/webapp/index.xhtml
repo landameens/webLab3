@@ -7,13 +7,25 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:body>
     <ui:composition template="views/template.xhtml">
+        <ui:define name="header">
+            <table class="header-footer">
+                <tr>
+                    <td>
+                        <h1 class="title">Lab3</h1>
+                    </td>
+                    <td><h3>Kirillova Nadia</h3></td>
+                    <td><h3>2817</h3></td>
+                    <td>
+                        <p:button outcome="to_main"
+                                  action="main"
+                                  value="Main"
+                                  styleClass="form_button"
+                        />
+                    </td>
+                </tr>
+            </table>
+        </ui:define>
         <ui:define name="content">
-            <p:button id="go-button"
-                      outcome="to_main"
-                      action="main"
-                      value="Main"
-                      styleClass="nav-btn"
-            />
             <div id="time"></div>
         </ui:define>
         <ui:define name="scripts">

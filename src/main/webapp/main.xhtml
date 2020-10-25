@@ -8,8 +8,25 @@
       xmlns:p="http://primefaces.org/ui">
 <h:body>
     <ui:composition template="views/template.xhtml">
+        <ui:define name="header">
+            <table class="header-footer">
+                <tr>
+                    <td>
+                        <h1 class="title">Lab3</h1>
+                    </td>
+                    <td><h3>Kirillova Nadia</h3></td>
+                    <td><h3>2817</h3></td>
+                    <td>
+                        <p:commandButton outcome="to_index"
+                                  action="index"
+                                  value="Start"
+                                  styleClass="form_button"
+                        />
+                    </td>
+                </tr>
+            </table>
+        </ui:define>
         <ui:define name="content">
-            <p:button id="go-button" outcome="to_index" action="index" value="Start"/>
             <div class="flex-container-main">
                 <div class="flex-container">
                     <ui:include src="views/canvas.html"/>
@@ -48,18 +65,32 @@
                                 </h:selectOneRadio>
 
                                 <p:commandButton value="Submit"
+                                                 id="submit"
                                                  action="#{history.addRecord}"
                                                  ajax="true"
+                                                 styleClass="go-button"
                                 >
                                     <f:ajax execute="form" render="table"/>
                                 </p:commandButton>
                             </div>
                         </div>
                     </h:form>
+                    <h:form id="hidden-form" style="display: none;">
+                        <h:inputHidden id="x" value="#{history.point.x}"/>
+                        <h:inputHidden id="y" value="#{history.point.y}"/>
+                        <h:inputHidden id="r" value="#{history.point.radius}"/>
+                        <p:commandButton value="Submit"
+                                         id="submit-hidden"
+                                         action="#{history.addRecord}"
+                                         ajax="true"
+                        >
+                            <f:ajax execute="hidden-form" render="table"/>
+                        </p:commandButton>
+                    </h:form>
                 </div>
 
                 <h:panelGroup id="table" class="result-table">
-                    <h:dataTable value="#{history.getRecords()}" var="point" >
+                    <h:dataTable value="#{history.getRecords()}" var="point">
                         <h:column>
                             <f:facet name="header">X</f:facet>
                             #{point.x}
@@ -80,10 +111,10 @@
                             #{point.result}
                         </h:column>
 
-<!--                        <h:column>-->
-<!--                            <f:facet name="header">Time</f:facet>-->
-<!--                            #{result.currentTime}-->
-<!--                        </h:column>-->
+                        <!--                        <h:column>-->
+                        <!--                            <f:facet name="header">Time</f:facet>-->
+                        <!--                            #{result.currentTime}-->
+                        <!--                        </h:column>-->
                     </h:dataTable>
                 </h:panelGroup>
             </div>

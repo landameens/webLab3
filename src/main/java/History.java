@@ -26,10 +26,6 @@ public class History implements Serializable {
         connection();
     }
 
-    public Deque<Point> getRecords() {
-        return points;
-    }
-
     public void addRecord() {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -45,6 +41,14 @@ public class History implements Serializable {
         configuration.addAnnotatedClass(Point.class);
         ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
         sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+    }
+
+    public Deque<Point> getRecords() {
+        return points;
+    }
+
+    public void setPoints(Deque<Point> points) {
+        this.points = points;
     }
 
     public Point getPoint() {

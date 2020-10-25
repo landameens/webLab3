@@ -17,18 +17,6 @@ body {
     min-height: 100vh;
 }
 
-#time {
-    height: 20vh;
-    color: white;
-    font-size: 22vh;
-    font-family: sans-serif;
-    line-height: 20.4vh;
-    display: flex;
-    position: relative;
-    overflow: hidden;
-    margin: auto auto;
-}
-
 h1 {
     font-size: 4em;
     font-weight: 600;
@@ -69,15 +57,24 @@ h3 {
     font-weight: bold;
 }
 
+#time {
+    height: 20vh;
+    color: white;
+    font-size: 22vh;
+    font-family: sans-serif;
+    line-height: 20.4vh;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    margin: auto auto;
+    text-shadow: #92a4ad 1px 3px;
+}
+
 #main {
     margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-#main > button {
-    margin-bottom: 2rem;
 }
 
 .flex-container {
@@ -95,6 +92,13 @@ label{
     color: var(--main-color);
     font-size: 17px;
     margin-right: 5px;
+}
+
+.not-checked {
+    font-weight: bolder;
+    color: var(--yellow-color);
+    text-shadow: 2px 1px red;
+    font-size: 20px;
 }
 
 form {
@@ -137,21 +141,27 @@ input[type="submit" i] {
     font-weight: 700;
 }
 
-img {
-    width: 50px;
-    display: block;
-    height: auto;
-    margin: 0 auto 5px;
+button:hover {
+    transition: all 0.3s ease-out;
+    transform: scale(1.02, 1.02);
+    box-shadow: rgba(255, 255, 255, 0.3) 0 0 16px 2px;
 }
 
-canvas {
-    padding-right: 0;
-    object-position: left;
-    margin-left: 13%;
-    margin-right: 10%;
+.form_button {
+    padding: 12px 32px;
+    transition: all 0.3s ease-out;
+    text-transform: uppercase;
+    color: var(--main-color);
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    background-color: var(--third-color);
+    background-clip: border-box;
+    font-size: 30px;
+    font-weight: 700;
 }
 
-#go-button {
+.go-button {
     text-decoration: none;
     outline: none;
     display: inline-block;
@@ -173,12 +183,19 @@ canvas {
     font-size: 20px;
 }
 
-#go-button:hover {
+.go-button:hover {
     animation: stripes .75s infinite linear;
     background: linear-gradient(45deg, var(--yellow-color) 25%, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 50%, var(--yellow-color) 50%,
     var(--yellow-color) 75%, rgba(255, 255, 255, 1) 75%, rgba(255, 255, 255, 1));
     background-size: 10px 10px;
-    color: var(--second-color);
+    color: var(--third-color);
+}
+
+canvas {
+    padding-right: 0;
+    object-position: left;
+    margin-left: 13%;
+    margin-right: 10%;
 }
 
 .result-table {
@@ -231,4 +248,11 @@ input[type="radio" i] + label:hover {
 input[type="radio" i]:checked + label {
     color: var(--third-color);
     border: 1px solid var(--yellow-color);
+}
+
+img {
+    width: 50px;
+    display: block;
+    height: auto;
+    margin: 0 auto 5px;
 }
