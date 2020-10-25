@@ -10,7 +10,7 @@ canvas.addEventListener("click", (event) => {
         }
 });
 
-function sendValues(x, y, r) {
+const sendValues = (x, y, r) => {
     const inputR = document.getElementById("hidden-form:r");
     const inputX = document.getElementById("hidden-form:x");
     const inputY = document.getElementById("hidden-form:y");
@@ -22,8 +22,8 @@ function sendValues(x, y, r) {
     document.getElementById("hidden-form:submit-hidden").click();
 }
 
-function getNormalCoords(r){
-    let position = getRelativeCoords(event);
+const getNormalCoords = r => {
+    const position = getRelativeCoords(event);
     let x = position.x;
     let y = position.y;
     setPointer(x, y);
@@ -36,11 +36,11 @@ function getNormalCoords(r){
     return {x: x, y: y};
 }
 
-function getRelativeCoords(event) {
+const getRelativeCoords = event => {
     return {x: event.offsetX, y: event.offsetY};
 }
 
-function isRChecked(r) {
+const isRChecked = r => {
     if(isNaN(r)){
         $('input[type="radio"]').prev("label").addClass("not-checked");
         return false;
