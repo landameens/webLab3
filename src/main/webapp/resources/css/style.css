@@ -70,6 +70,15 @@ h3 {
     text-shadow: #92a4ad 1px 3px;
 }
 
+.link-page {
+    color: var(--main-color);
+    float: right;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+
 #main {
     margin: auto;
     display: flex;
@@ -92,13 +101,6 @@ label{
     color: var(--main-color);
     font-size: 17px;
     margin-right: 5px;
-}
-
-.not-checked {
-    font-weight: bolder;
-    color: var(--yellow-color);
-    text-shadow: 2px 1px red;
-    font-size: 20px;
 }
 
 form {
@@ -145,20 +147,6 @@ button:hover {
     transition: all 0.3s ease-out;
     transform: scale(1.02, 1.02);
     box-shadow: rgba(255, 255, 255, 0.3) 0 0 16px 2px;
-}
-
-.form_button {
-    padding: 12px 32px;
-    transition: all 0.3s ease-out;
-    text-transform: uppercase;
-    color: var(--main-color);
-    border: none;
-    border-radius: 8px;
-    outline: none;
-    background-color: var(--third-color);
-    background-clip: border-box;
-    font-size: 30px;
-    font-weight: 700;
 }
 
 .go-button {

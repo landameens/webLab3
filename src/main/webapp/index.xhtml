@@ -3,7 +3,6 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:body>
     <ui:composition template="views/template.xhtml">
@@ -16,11 +15,9 @@
                     <td><h3>Kirillova Nadia</h3></td>
                     <td><h3>2817</h3></td>
                     <td>
-                        <p:button outcome="to_main"
-                                  action="main"
-                                  value="Main"
-                                  styleClass="form_button"
-                        />
+                        <h:link outcome="to_main" styleClass="link-page">
+                            Main
+                        </h:link>
                     </td>
                 </tr>
             </table>

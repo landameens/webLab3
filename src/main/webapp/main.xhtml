@@ -17,11 +17,9 @@
                     <td><h3>Kirillova Nadia</h3></td>
                     <td><h3>2817</h3></td>
                     <td>
-                        <p:commandButton outcome="to_index"
-                                  action="index"
-                                  value="Start"
-                                  styleClass="form_button"
-                        />
+                        <h:link outcome="to_index" styleClass="link-page">
+                            Home
+                        </h:link>
                     </td>
                 </tr>
             </table>
@@ -34,7 +32,10 @@
                         <div>
                             <div class="form-input">
                                 <h:outputLabel for="x-input" disabled="true" value="Choose X:"/>
-                                <h:selectOneMenu id="x-input" value="#{history.point.x}">
+                                <h:selectOneMenu id="x-input"
+                                                 value="#{history.point.x}"
+                                                 required="true"
+                                >
                                     <f:selectItem itemValue="-2" itemLabel="-2"/>
                                     <f:selectItem itemValue="-1.5" itemLabel="-1,5"/>
                                     <f:selectItem itemValue="-1" itemLabel="-1"/>
@@ -51,12 +52,22 @@
                                 <p:inputNumber id="y-input"
                                                value="#{history.point.y}"
                                                autocomplete="off"
-                                />
+                                               minValue="-5"
+                                               maxValue="5"
+                                               decimalPlaces="2"
+                                               required="true"
+                                               requiredMessage="Enter the Y value."
+                                /><br/>
+                                <h:message for="y-input" id="y-massage"/>
                             </div>
 
                             <div class="form-input">
                                 <h:outputLabel for="r-input" disabled="true" value="Choose R:"/>
-                                <h:selectOneRadio id="r-input" value="#{history.point.radius}">
+                                <h:selectOneRadio id="r-input"
+                                                  value="#{history.point.radius}"
+                                                  required="true"
+                                                  requiredMessage="Select the R value."
+                                >
                                     <f:selectItem itemLabel="1" itemValue="1"/>
                                     <f:selectItem itemValue="2" itemLabel="2"/>
                                     <f:selectItem itemValue="3" itemLabel="3"/>
@@ -64,11 +75,15 @@
                                     <f:selectItem itemValue="5" itemLabel="5"/>
                                 </h:selectOneRadio>
 
+                                <h:message for="r-input" id="r-message"/>
+                            </div>
+
+                            <div class="form-input">
                                 <p:commandButton value="Submit"
                                                  id="submit"
                                                  action="#{history.addRecord}"
                                                  styleClass="go-button"
-                                                 update="table"
+                                                 update="table y-massage r-message"
                                 />
                             </div>
                         </div>
