@@ -21,7 +21,7 @@ public class History implements Serializable {
     private Deque<Point> points;
 
     public History() {
-        points = new LinkedList<Point>();
+        points = new LinkedList<>();
         point = new Point();
         connection();
     }
@@ -43,7 +43,7 @@ public class History implements Serializable {
         sessionFactory = configuration.buildSessionFactory(serviceRegistry);
     }
 
-    public Deque<Point> getRecords() {
+    public Deque<Point> getPoints() {
         return points;
     }
 
