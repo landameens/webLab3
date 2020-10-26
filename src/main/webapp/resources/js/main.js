@@ -1,15 +1,32 @@
 let rValue;
-$('input[type="radio" i]').on('change', function() {
-        rValue = $('input[type="radio" i]:checked').val();
-       drawCanvas(rValue);
-});
 
-canvas.addEventListener("click", (event) => {
+document.addEventListener("DOMContentLoaded", function () {
+    drawCanvas(0);
+
+    document.getElementById("form:submit").onclick = () => {
+        const xSelect = document.getElementById("form:x-input");
+        const x = xSelect.options[xSelect.selectedIndex].value;
+        const r = $('input[type="radio" i]:checked').val();
+        const y = document.getElementById('form:y-input_input').value;
+        const result = getResult(x, y, r);
+        setPoint(x, y, result);
+    };
+
+    $('input[type="radio" i]').on('change', function() {
+        $('#r-message-from-canvas').text('');
         rValue = $('input[type="radio" i]:checked').val();
-        if(!isNaN(rValue)){
+        drawCanvas(rValue);
+    });
+
+    canvas.addEventListener("click", (event) => {
+        rValue = $('input[type="radio" i]:checked').val();
+        if( !isNaN(rValue) ){
             const coord = getNormalCoords(rValue);
             sendValues(coord.x, coord.y, rValue);
+        } else {
+            $('#r-message-from-canvas').text('Select the R value.');
         }
+    });
 });
 
 const sendValues = (x, y, r) => {
@@ -30,7 +47,7 @@ const getNormalCoords = (r) => {
     let y = position.y;
     x = x - 150;
     y = 180 - y;
-    const k = r / 140
+    const k = r / 140;
     x = (x * k).toFixed(1);
     y = (y * k).toFixed(1);
 
@@ -41,7 +58,10 @@ const getNormalCoords = (r) => {
 }
 
 const getRelativeCoords = (event) => {
-    return {x: event.offsetX, y: event.offsetY};
+    return {
+        x: event.offsetX,
+        y: event.offsetY
+    };
 }
 
 const getResult = (x, y, radius) => {
@@ -53,19 +73,4 @@ const getResult = (x, y, radius) => {
     const inSquare = (x >= 0 && x <= radius) && (y >= 0 && y <= radius);
 
     return (inTriangle || inCircleQuadrant || inSquare);
-}
-
-const setPointsCoordinate = (x, y, r) => {
-    const pointsCoordinates = sessionStorage.getItem('points') ? JSON.parse(sessionStorage.getItem('points')) : [];
-
-    const k = 140 / r
-    const xCoordinate = (x * k) + 150;
-    const yCoordinate = 180 - (y * k);
-    const coordinate = {
-        "x": xCoordinate,
-        "y": yCoordinate,
-    };
-
-    pointsCoordinates.push(coordinate);
-    sessionStorage.setItem('points', JSON.stringify(pointsCoordinates));
 }

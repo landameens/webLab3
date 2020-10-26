@@ -73,9 +73,10 @@ h3 {
 .link-page {
     color: var(--main-color);
     float: right;
-    font-size: 18px;
-    font-weight: 600;
+    padding: 12px;
     text-decoration: none;
+    font-size: 25px;
+    font-weight: bold;
 }
 
 

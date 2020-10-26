@@ -74,8 +74,9 @@
                                     <f:selectItem itemValue="4" itemLabel="4"/>
                                     <f:selectItem itemValue="5" itemLabel="5"/>
                                 </h:selectOneRadio>
-
-                                <h:message for="r-input" id="r-message"/>
+                                <p id="r-message-from-canvas">
+                                    <h:message for="r-input" id="r-message"/>
+                                </p>
                             </div>
 
                             <div class="form-input">
@@ -91,7 +92,8 @@
                     <h:form id="hidden-form" style="display: none;">
                         <h:inputHidden id="x" value="#{history.point.x}"/>
                         <h:inputHidden id="y" value="#{history.point.y}"/>
-                        <h:inputHidden id="r" value="#{history.point.radius}"/>
+                        <h:inputHidden id="r" value="#{history.point.radius}" required="true"
+                                       requiredMessage="Select the R value."/>
                         <p:commandButton value="Submit"
                                          id="submit-hidden"
                                          action="#{history.addRecord}"
@@ -101,9 +103,9 @@
                 </div>
 
                 <h:panelGroup id="table" class="result-table">
-                    <h:dataTable value="#{history.points}" var="point">
+                    <h:dataTable id="results" value="#{history.points}" var="point">
                         <h:column>
-                            <f:facet name="header">X</f:facet>
+                            <f:facet name="header" id="x">X</f:facet>
                             #{point.x}
                         </h:column>
 
