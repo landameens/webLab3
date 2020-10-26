@@ -80,12 +80,14 @@
                             </div>
 
                             <div class="form-input">
-                                <p:commandButton value="Submit"
-                                                 id="submit"
-                                                 action="#{history.addRecord}"
-                                                 styleClass="go-button"
-                                                 update="table y-massage r-message"
-                                />
+                                <span id="span-submit">
+                                    <p:commandButton value="Submit"
+                                                     id="submit"
+                                                     action="#{history.addRecord}"
+                                                     styleClass="go-button"
+                                                     update="table y-massage r-message"
+                                    />
+                                </span>
                             </div>
                         </div>
                     </h:form>

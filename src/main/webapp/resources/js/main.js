@@ -3,13 +3,14 @@ let rValue;
 document.addEventListener("DOMContentLoaded", function () {
     drawCanvas(0);
 
-    document.getElementById("form:submit").onclick = () => {
+    document.getElementById("span-submit").onclick = () => {
         const xSelect = document.getElementById("form:x-input");
         const x = xSelect.options[xSelect.selectedIndex].value;
+        const y = parseFloat(document.getElementById('form:y-input_input').value.replace(',', '.'));
         const r = $('input[type="radio" i]:checked').val();
-        const y = document.getElementById('form:y-input_input').value;
         const result = getResult(x, y, r);
-        setPoint(x, y, result);
+        const coord = getCanvasCoord(x, y, r);
+        setPoint(coord.x, coord.y, result);
     };
 
     $('input[type="radio" i]').on('change', function() {
